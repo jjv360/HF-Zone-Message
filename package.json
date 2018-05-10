@@ -1,0 +1,35 @@
+{
+  "name": "hf-zone-alert",
+  "version": "1.0.0",
+  "description": "Displays an alert or message to all users when they enter a Zone on your domain.",
+  "main": "src/start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p"
+  },
+  "keywords": [
+    "high",
+    "fidelity",
+    "hf",
+    "high-fidelity",
+    "zone",
+    "message",
+    "alert",
+    "prompt"
+  ],
+  "author": "jjv360",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "es3ify-loader": "^0.2.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.2"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
