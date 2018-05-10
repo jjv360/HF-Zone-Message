@@ -11,7 +11,7 @@ Call `npm run build`, and the script will be compiled into the `dist/` folder.
 
  - [x] Webpack + Babel for latest JavaScript and npm package support
  - [x] Display message to user
- - [ ] Display alert icon
+ - [x] Display alert icon
  - [ ] Animate in
  - [ ] Message timeout
  - [ ] Control script for zone admin

@@ -45,8 +45,7 @@ module.exports.module.rules.push({
         {
             loader: 'babel-loader',
             options: {
-                presets: ["env"],
-
+                presets: [require("babel-preset-env")],
             }
         }
 

@@ -30,6 +30,7 @@
     "webpack-cli": "^2.1.2"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "hf-ui": "file:../HF UI"
   }
 }

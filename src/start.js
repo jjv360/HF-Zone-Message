@@ -2,9 +2,7 @@
 // Entry point for the script
 
 import LocalEntity from './LocalEntity'
-import View from './Overlays/View'
-import Label from './Overlays/Label'
-import { animate } from './Overlays/Animation'
+import { View, Label, ImageView, animate } from 'hf-ui'
 
 /** This is the entity class for the entity this script is attached to. */
 export default class MyEntity extends LocalEntity {
@@ -76,6 +74,16 @@ export default class MyEntity extends LocalEntity {
         var text = info.text
         var footer = info.footer
 
+        // Replace built-in icons with their URLs NOTE: These images are from flaticon.com
+        if (icon == "info")
+            icon = require("./info.png")
+        else if (icon == "question")
+            icon = require("./question.png")
+        else if (icon == "warning")
+            icon = require("./warning.png")
+        else if (icon == "error")
+            icon = require("./error.png")
+
         // Create overlay
         console.log("[Zone Alert] Fetching message...")
         this.overlay = new View()
@@ -84,15 +92,24 @@ export default class MyEntity extends LocalEntity {
         this.overlay.width = 400
         this.overlay.height = 100
         this.overlay.alpha = 0
-        this.overlay.backgroundAlpha = 0.25
-        this.overlay.backgroundColor = { red: 200, green: 200, blue: 255 }
+        this.overlay.backgroundAlpha = 0.75
+        this.overlay.backgroundColor = { red: 0, green: 0, blue: 10 }
         this.overlay.show()
+
+        // Create icon
+        this.icon = new ImageView()
+        this.icon.x = 10
+        this.icon.y = 10
+        this.icon.width = 32
+        this.icon.height = 32
+        this.icon.imageURL = icon
+        this.overlay.addSubview(this.icon)
 
         // Create title label
         this.title = new Label()
-        this.title.x = 10
+        this.title.x = 10 + 32 + 10
         this.title.y = 10
-        this.title.width = this.overlay.width - 20
+        this.title.width = this.overlay.width - 10 - 32 - 10
         this.title.height = 20
         this.title.color = { red: 255, green: 255, blue: 255 }
         this.title.font = { size: 17 }
@@ -101,9 +118,9 @@ export default class MyEntity extends LocalEntity {
 
         // Create subtitle label
         this.subtitle = new Label()
-        this.subtitle.x = 10
+        this.subtitle.x = 10 + 32 + 10
         this.subtitle.y = this.title.y + this.title.height + 10
-        this.subtitle.width = this.overlay.width - 20
+        this.subtitle.width = this.overlay.width - 10 - 32 - 10
         this.subtitle.height = text.split("\n").length * 18
         this.subtitle.color = { red: 200, green: 200, blue: 200 }
         this.subtitle.font = { size: 13 }
@@ -121,7 +138,7 @@ export default class MyEntity extends LocalEntity {
         this.footer.text = footer
         this.footer.topMargin = 5
         this.footer.leftMargin = 10
-        this.footer.backgroundAlpha = 0.25
+        this.footer.backgroundAlpha = 0.5
         this.footer.backgroundColor = { red: 0, green: 0, blue: 0 }
         this.overlay.addSubview(this.footer)
 
