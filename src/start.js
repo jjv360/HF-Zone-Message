@@ -28,7 +28,7 @@ export default class MyEntity extends LocalEntity {
         super.unload()
 
         // Remove all overlays
-        this.overlay.remove()
+        this.removeOverlay()
 
     }
 
@@ -63,6 +63,12 @@ export default class MyEntity extends LocalEntity {
         if (this.overlay)
             return
 
+        // Clear timer
+        if (this.removeTimer) {
+            Script.clearTimeout(this.removeTimer)
+            this.removeTimer = null
+        }
+
         // Get entity properties
         var info = this.getUserData("com.jjv360.hf-zone-alert.current")
         if (!info)
@@ -73,6 +79,7 @@ export default class MyEntity extends LocalEntity {
         var title = info.title
         var text = info.text
         var footer = info.footer
+        var timeout = info.timeout || 0
 
         // Replace built-in icons with their URLs NOTE: These images are from flaticon.com
         if (icon == "info")
@@ -150,10 +157,20 @@ export default class MyEntity extends LocalEntity {
         this.overlay.alpha = 1
         this.overlay.x = 20
 
+        // Start timer to remove the element, if needed
+        if (timeout > 0)
+            this.removeTimer = Script.setTimeout(this.removeOverlay.bind(this), timeout * 1000)
+
     }
 
     /** Removes any overlay */
     removeOverlay() {
+
+        // Clear timer
+        if (this.removeTimer) {
+            Script.clearTimeout(this.removeTimer)
+            this.removeTimer = null
+        }
 
         // Stop if overlay has been removed already
         if (!this.overlay)

@@ -13,9 +13,12 @@ Call `npm run build`, and the script will be compiled into the `dist/` folder.
  - [x] Display message to user
  - [x] Display alert icon
  - [ ] Animate in
- - [ ] Message timeout
+ - [x] Message timeout
  - [ ] Control script for zone admin
  - [ ] Change in real-time
+ - [ ] Layout and position options
+ - [ ] Alert sound
+ - [ ] Option to show only once
  - [ ] Upload to Marketplace
 
 ## Advanced
@@ -31,7 +34,8 @@ zone entity the script is attached to. Example:
         "icon": "info",
         "title": "Hello!",
         "text": "Welcome to my zone!",
-        "footer": "Made by jjv360"
+        "footer": "Made by jjv360",
+        "timeout": 15
     }
 }
 ```
