@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/status-stale-orange.svg)
+
 # High Fidelity: Zone Message
 
 This is a zone client entity script for [High Fidelity](https://highfidelity.com).
